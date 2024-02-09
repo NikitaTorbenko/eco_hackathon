@@ -1,0 +1,32 @@
+@import "./normalize.css";
+@import "vars.css";
+
+.app{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.container{
+    width: 100%;
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 0 10px;
+    height: 100vh;
+
+    background-color: #FFFFFF;
+}
+
+.app::-webkit-scrollbar {
+    width: 10px;
+}
+.app::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+    .app::-webkit-scrollbar-thumb {
+        display: none;
+    }
+}
