@@ -1,23 +1,24 @@
-import style from "./RegistrationPage.module.scss";
 import {
   Box,
   Button,
-  Checkbox,
   Container,
-  Divider,
   FormControl,
   FormLabel,
   Heading,
-  HStack,
   Input,
-  Link,
+  Link as ChakraLink,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { OAuthButtonGroup } from "./OAuthButtonGroup";
+import { Link } from "react-router-dom";
 import { PasswordField } from "./PasswordField";
+import { useState } from "react";
 
-const RegistrationPage = () => {
+export const RegistrationPage = () => {
+  const [inputName, setInputName] = useState("");
+  const [inputLogin, setInputLogin] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+
   return (
     <Container
       maxW="lg"
@@ -28,10 +29,10 @@ const RegistrationPage = () => {
         <Stack spacing="6">
           <Stack spacing={{ base: "2", md: "3" }} textAlign="center">
             <Heading size={{ base: "xs", md: "sm" }}>
-              Log in to your account
+              Sign up for a new account
             </Heading>
             <Text color="fg.muted">
-              Don't have an account? <Link href="#">Sign up</Link>
+              You have an account? <Link to="/login">Log in</Link>
             </Text>
           </Stack>
         </Stack>
@@ -45,33 +46,32 @@ const RegistrationPage = () => {
           <Stack spacing="6">
             <Stack spacing="5">
               <FormControl>
-                <FormLabel htmlFor="email">Email</FormLabel>
-                <Input id="email" type="email" />
+                <FormLabel htmlFor="login">Login</FormLabel>
+                <Input
+                  value={inputLogin}
+                  onChange={(e) => setInputLogin(e.target.value)}
+                  id="login"
+                  type="login"
+                />
               </FormControl>
-              <PasswordField />
+              <FormControl>
+                <FormLabel htmlFor="name">Name</FormLabel>
+                <Input
+                  value={inputName}
+                  onChange={(e) => setInputName(e.target.value)}
+                  id="name"
+                  type="name"
+                />
+              </FormControl>
+              <PasswordField
+                inputPassword={inputPassword}
+                setInputPassword={setInputPassword}
+              />
             </Stack>
-            <HStack justify="space-between">
-              <Checkbox defaultChecked>Remember me</Checkbox>
-              <Button variant="text" size="sm">
-                Forgot password?
-              </Button>
-            </HStack>
-            <Stack spacing="6">
-              <Button>Sign in</Button>
-              <HStack>
-                <Divider />
-                <Text textStyle="sm" whiteSpace="nowrap" color="fg.muted">
-                  or continue with
-                </Text>
-                <Divider />
-              </HStack>
-              <OAuthButtonGroup />
-            </Stack>
+            <Button colorScheme="green">Registration</Button>
           </Stack>
         </Box>
       </Stack>
     </Container>
   );
 };
-
-export default RegistrationPage;

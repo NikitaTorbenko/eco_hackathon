@@ -12,13 +12,8 @@ import {
 import { forwardRef, useRef } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
-interface Props {
-  inputPassword: string;
-  setInputPassword: (str: string) => void;
-}
-
-export const PasswordField = forwardRef<HTMLInputElement, Props>(
-  ({ inputPassword, setInputPassword }, ref) => {
+export const PasswordField = forwardRef<HTMLInputElement, InputProps>(
+  (props, ref) => {
     const { isOpen, onToggle } = useDisclosure();
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -49,8 +44,7 @@ export const PasswordField = forwardRef<HTMLInputElement, Props>(
             type={isOpen ? "text" : "password"}
             autoComplete="current-password"
             required
-            value={inputPassword}
-            onChange={(e) => setInputPassword(e.target.value)}
+            {...props}
           />
         </InputGroup>
       </FormControl>
