@@ -2,12 +2,12 @@
 @import "vars.css";
 
 .app{
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
     position: relative;
 }
 
-.app::-webkit-scrollbar {
+/* .app::-webkit-scrollbar {
     width: 10px;
 }
 .app::-webkit-scrollbar-thumb {
@@ -19,4 +19,4 @@
     .app::-webkit-scrollbar-thumb {
         display: none;
     }
-}
+} */
