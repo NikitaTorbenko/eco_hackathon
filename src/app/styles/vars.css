@@ -2,7 +2,12 @@
     --primary-color: #0466c8;
     --secondary-color: #FFFFFF;
 
-    --primary-bg-color: #FFFFFF;
+    --primary-bg-color: #EDF2F7;
     --secondary-bg-color: #FFFFFF;
-    --ternary-bh-color: #FFFFFF;
+    --ternary-bg-color: #FFFFFF;
+
+    --primary-link-color: #A0AEC0;
+    --primary-hover: #38B2AC;
+
+    --height-header: 65px
 }

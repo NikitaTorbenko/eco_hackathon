@@ -1,0 +1,29 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+
+    a{
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--primary-link-color);
+        transition: .2s;
+    }
+    a:after {
+        background-color: var(--primary-hover);
+        display: block;
+        content: "";
+        height: 2px; /* Высота линии */
+        width: 0%;
+        -webkit-transition: width .3s ease-in-out;
+        -moz--transition: width .3s ease-in-out;
+        transition: width .3s ease-in-out;
+    }
+    a:hover{
+        color: var(--primary-hover);
+    }
+    a:hover:after,
+    a:focus:after {
+        width: 100%;
+    }
+}
