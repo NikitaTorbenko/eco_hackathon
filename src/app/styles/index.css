@@ -1,10 +1,9 @@
 @import "./normalize.css";
 @import "vars.css";
 
-.app{
-    overflow-y: hidden;
-    overflow-x: hidden;
-    position: relative;
+.app {
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* .app::-webkit-scrollbar {

@@ -1,0 +1,52 @@
+.footer {
+  background-color: var(--primary-bg-color);
+  padding: 40px 0;
+
+  &Container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+    @media (max-width: 730px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &Item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: fit-content;
+    margin: 0 auto;
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+
+  @media (max-width: 970px) {
+    font-size: 20px;
+  }
+}
+
+.subtitle {
+  font-size: 22px;
+  font-weight: 500;
+
+  @media (max-width: 970px) {
+    font-size: 18px;
+    width: 200px;
+  }
+}
+
+.contacts {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}

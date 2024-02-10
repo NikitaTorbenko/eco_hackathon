@@ -7,9 +7,9 @@ import { StoreProvider } from "app/providers/store";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StoreProvider>
     <BrowserRouter>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
-  </BrowserRouter>
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
+    </BrowserRouter>
   </StoreProvider>
 );
