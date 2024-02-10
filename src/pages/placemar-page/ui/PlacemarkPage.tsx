@@ -10,8 +10,9 @@ import { pathRoutes } from "shared/config/route-path";
 import { Layout } from "widgets/index";
 import { trashLevels } from "shared/data/level-trash";
 import { ReportItem, useGetReportsQuery } from "entities/report";
+import { useWindowSize } from "shared/lib/hooks/useWindowSize";
 
-import { Navigation, Pagination, A11y } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -19,11 +20,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const imgs = ["fwq", "dqwd", "df", "jyht", "gfbv"];
+const imgs = [
+  "https://img.freepik.com/free-photo/fresh-yellow-daisy-single-flower-close-up-beauty-generated-by-ai_188544-15543.jpg",
+  "https://img.freepik.com/free-photo/fresh-yellow-daisy-single-flower-close-up-beauty-generated-by-ai_188544-15543.jpg",
+  "https://img.freepik.com/free-photo/fresh-yellow-daisy-single-flower-close-up-beauty-generated-by-ai_188544-15543.jpg",
+  "https://img.freepik.com/free-photo/fresh-yellow-daisy-single-flower-close-up-beauty-generated-by-ai_188544-15543.jpg",
+  "https://img.freepik.com/free-photo/fresh-yellow-daisy-single-flower-close-up-beauty-generated-by-ai_188544-15543.jpg",
+];
 
 const PlacemarkPage = () => {
   const { id = 0 } = useParams();
   const navigation = useNavigate();
+  const dimensions = useWindowSize();
 
   const { data, isLoading } = useGetPlacemarkByIdQuery(Number(id));
   const { data: dataReport, isLoading: isLoadingReport } = useGetReportsQuery(
@@ -48,15 +56,17 @@ const PlacemarkPage = () => {
       <div className={style.page}>
         <div className={style.slider}>
           <Swiper
-            modules={[Navigation, Pagination, A11y]}
-            spaceBetween={50}
-            slidesPerView={3}
+            modules={[Navigation, Pagination]}
+            slidesPerView={
+              dimensions.width >= 1250 ? 3 : dimensions.width >= 880 ? 2 : 1
+            }
             navigation
+            loop
             pagination={{ clickable: true }}
           >
             {imgs.map((img, index) => (
               <SwiperSlide key={index}>
-                <img src={img} alt={index + ""} />
+                <img className={style.swiperImg} src={img} alt={index + ""} />
               </SwiperSlide>
             ))}
           </Swiper>
