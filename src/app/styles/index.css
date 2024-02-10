@@ -7,16 +7,6 @@
     position: relative;
 }
 
-.container{
-    width: 100%;
-    max-width: 1460px;
-    margin: 0 auto;
-    padding: 0 10px;
-    height: 100vh;
-
-    background-color: #FFFFFF;
-}
-
 .app::-webkit-scrollbar {
     width: 10px;
 }
