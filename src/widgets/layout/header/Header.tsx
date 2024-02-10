@@ -1,12 +1,21 @@
 import style from "./Header.module.scss"
 import { memo } from "react";
+import { Navbar } from "./navbar/Navbar";
+import classNames from "classnames";
 
-export const Header = memo(() => {
+interface IHeaderProps {
+    className?: string
+}
+
+export const Header: React.FC<IHeaderProps> = memo((props) => {
+    const {
+        className
+    } = props
+
     return(
-        <div className={style.header}>
-            <h1>
-                ECO-Hackaton
-            </h1>
+        <div className={classNames(style.header, className)}>
+            <h1>ECO-Hackaton</h1>
+            <Navbar width="600px"/>
         </div>
     )
 })
