@@ -10,7 +10,7 @@ export const Footer = memo(() => {
     <div className={style.footer}>
       <div className={`container ${style.footerContainer}`}>
         {contacts.map((el) => (
-          <div className={style.footerItem}>
+          <div className={style.footerItem} key={el.name}>
             <h3 className={style.title}>{el.name}</h3>
             {/* <img src={el.img} alt="" /> */}
             <h4 className={style.subtitle}>{el.job}</h4>
