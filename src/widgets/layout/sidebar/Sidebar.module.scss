@@ -18,7 +18,7 @@
     height: 26px;
     width: 32px;
     position: absolute;
-    top: 17px;
+    top: 20px;
     left: 20px;
     z-index: 2;
     display: flex;
@@ -66,6 +66,7 @@ input[type="checkbox"]:checked ~ .hamburger_lines .line3 {
 
 .sidebar{
     margin-top: 3px;
+    padding: 10px;
     background-color: var(--secondary-bg-color);
     box-shadow: 0px 5px 5px 0 #858585;
     opacity: 0;
@@ -79,3 +80,17 @@ input[type="checkbox"]:checked ~ .hamburger_lines .line3 {
     width: 450px;
 }
 
+@media (max-width: 350px) {
+    .hamburger_lines{
+        width: 20px;
+        height: 18px;
+        top: 25px;
+    }
+    .hamburger_lines .line{
+        height: 3px;
+    }
+
+    .checkbox{
+        top: 25px;
+    }
+}

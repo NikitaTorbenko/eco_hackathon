@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import style from "./Sidebar.module.scss"
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
+import { Navbar } from "../navbar/Navbar";
 
 interface ISidebarProps {
     padding?: string,
@@ -19,6 +20,21 @@ export const Sidebar: React.FC<ISidebarProps> = memo((props) => {
 
     const [isOpen, setOpen] = useState(false)
     const [isMounted, setMounted] = useState(false)
+
+    const [isShowNavbar, setShowNavbar] = useState(false)
+
+    const resizeInnerWidthHandle = useCallback(() => {
+        window.innerWidth < 700 ? setShowNavbar(true) : setShowNavbar(false)
+    }, [])
+
+    useEffect(() => {
+        resizeInnerWidthHandle()
+        window.addEventListener('resize', resizeInnerWidthHandle)
+    
+        return () => {
+          window.removeEventListener('resize', resizeInnerWidthHandle)
+        }
+    }, [window])
 
     const toggleHandle = useCallback(() => {
         isMounted ? setOpen(!isOpen) : setMounted(!isMounted)
@@ -49,6 +65,8 @@ export const Sidebar: React.FC<ISidebarProps> = memo((props) => {
                 <div 
                     style={{padding}} 
                     className={classNames(style.sidebar, mods, classNameSidebar)}>
+                        {isShowNavbar &&
+                            <Navbar width="100%"/>}
                         {children}
                 </div>}
         </div>

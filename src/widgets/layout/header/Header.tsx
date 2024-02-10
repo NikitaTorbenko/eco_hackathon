@@ -1,6 +1,6 @@
 import style from "./Header.module.scss"
-import { memo } from "react";
-import { Navbar } from "./navbar/Navbar";
+import { memo, useCallback, useEffect, useState } from "react";
+import { Navbar } from "../navbar/Navbar";
 import classNames from "classnames";
 
 interface IHeaderProps {
@@ -12,10 +12,26 @@ export const Header: React.FC<IHeaderProps> = memo((props) => {
         className
     } = props
 
+    const [isShowNavbar, setShowNavbar] = useState(true)
+
+    const resizeInnerWidthHandle = useCallback(() => {
+        window.innerWidth < 700 ? setShowNavbar(false) : setShowNavbar(true)
+    }, [])
+
+    useEffect(() => {
+        resizeInnerWidthHandle()
+        window.addEventListener('resize', resizeInnerWidthHandle)
+    
+        return () => {
+          window.removeEventListener('resize', resizeInnerWidthHandle)
+        }
+    }, [window])
+
     return(
         <div className={classNames(style.header, className)}>
             <h1>ECO-Hackaton</h1>
-            <Navbar width="600px"/>
+            {isShowNavbar &&
+                <Navbar width="600px" className={style.navbar}/>}
         </div>
     )
 })
