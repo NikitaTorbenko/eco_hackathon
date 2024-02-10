@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { PasswordField } from "./PasswordField";
 import { useState } from "react";
 
-export const RegistrationPage = () => {
+const RegistrationPage = () => {
   const [inputName, setInputName] = useState("");
   const [inputLogin, setInputLogin] = useState("");
   const [inputPassword, setInputPassword] = useState("");
@@ -75,3 +75,5 @@ export const RegistrationPage = () => {
     </Container>
   );
 };
+
+export default RegistrationPage;

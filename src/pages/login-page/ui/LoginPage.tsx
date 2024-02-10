@@ -13,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import { PasswordField } from "./PasswordField";
 
-export const LoginPage = () => {
+const LoginPage = () => {
   return (
     <Container
       maxW="lg"
@@ -53,3 +53,5 @@ export const LoginPage = () => {
     </Container>
   );
 };
+
+export default LoginPage;
