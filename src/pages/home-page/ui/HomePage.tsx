@@ -6,7 +6,8 @@ import { Map, YMaps } from "react-yandex-maps"
 
 const testApi: IPlacemarkTrash[] = [
     {
-        creatorId: 0,
+        nameuser: 'dg',
+        description: '',
         date: 'DSG',
         id: 1,
         images: [],
@@ -14,15 +15,17 @@ const testApi: IPlacemarkTrash[] = [
         сoords: [47.232653, 39.724648]
     },
     {
-        creatorId: 0,
+        nameuser: 'dg',
         date: 'DSG',
+        description: '',
         id: 2,
         images: [],
         pullutionLevel: 1,
         сoords: [47.222245, 39.650833]
     },
     {
-        creatorId: 0,
+        nameuser: 'dg',
+        description: '',
         date: 'DSG',
         id: 3,
         images: [],

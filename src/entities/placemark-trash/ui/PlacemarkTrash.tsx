@@ -1,5 +1,6 @@
 import { Placemark } from "react-yandex-maps"
 import { memo } from "react"
+import { trashLevels } from "shared/data/level-trash"
 
 interface IPlacemarkTrash {
     iconImageSize?: [number, number],
@@ -7,13 +8,6 @@ interface IPlacemarkTrash {
     indexColor?: number,
     coords: [number, number]
 }
-
-const colors: string[] = [
-    'gray',
-    'green',
-    'yellow',
-    'red'
-]
 
 export const PlacemarkTrash: React.FC<IPlacemarkTrash> = memo((props) => {
     const {
@@ -25,9 +19,9 @@ export const PlacemarkTrash: React.FC<IPlacemarkTrash> = memo((props) => {
 
     const placemarkOptions = {
         preset: "islands#circleIcon",
-        iconImageSize: iconImageSize, // размеры иконки
-        iconImageOffset: iconImageOffset, // смещение иконки
-        iconColor: colors[indexColor]
+        iconImageSize: iconImageSize,
+        iconImageOffset: iconImageOffset,
+        iconColor: trashLevels[indexColor].color
       };
 
     return(

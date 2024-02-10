@@ -1,0 +1,51 @@
+.report{
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F580;
+    padding: 20px;
+    border-radius: 15px;
+}
+.header{
+    display: flex;
+    
+    img{
+        width: 100px;
+        height: 100px;
+        border-radius: 20px;
+    }
+    .info{
+        margin: 10px 0 0 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .name{
+            font-size: 18px;
+            font-weight: 500;
+            color: #252525;
+        }
+
+        span{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+    
+            font-size: 16px;
+            font-weight: 400;
+            color: #252525;
+        }
+        .color{
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+    }
+}
+
+.description{
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 22px;
+    letter-spacing: 0em;
+}

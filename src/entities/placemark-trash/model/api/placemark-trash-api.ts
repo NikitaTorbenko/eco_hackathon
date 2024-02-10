@@ -6,13 +6,20 @@ export const placemarkTrashApi = createApi({
   reducerPath: 'PlacemarkTrashApi',
   baseQuery,
   endpoints: (builder) => ({
-    getPlacemarks: builder.query<IPlacemarkTrash, undefined>({
+    getPlacemarks: builder.query<IPlacemarkTrash[], null>({
       query: () => `${fetchPath.point}`,
-    })
+    }),
+    getPlacemarkById: builder.query<IPlacemarkTrash, number>({
+      query: (id) => `${fetchPath.point}/${id}`,
+    }),
   })
 })
 
-export const { useGetPlacemarksQuery, useLazyGetPlacemarksQuery } = placemarkTrashApi
+export const { 
+  useGetPlacemarksQuery, 
+  useLazyGetPlacemarksQuery,
+  useGetPlacemarkByIdQuery,
+  useLazyGetPlacemarkByIdQuery } = placemarkTrashApi
 
 export const placemarkTrashApiReducer = placemarkTrashApi.reducer
 export const placemarkTrashApiMiddleware = placemarkTrashApi.middleware

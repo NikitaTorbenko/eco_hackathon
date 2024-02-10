@@ -7,7 +7,7 @@ export interface IRoutePathProperties {
 
 export enum enumPath {
   HOME = "home",
-  AUTH = "auth",
+  PLACEMARK = "placemark",
   NOTFOUND = "not-found",
   TOP = "top",
   REGISTRATION = "registration",

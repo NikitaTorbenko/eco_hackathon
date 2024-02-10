@@ -3,6 +3,7 @@ export interface IPlacemarkTrash {
     сoords: [number, number],
     images: string[],
     pullutionLevel: number,
-    creatorId: number,
+    description: string,
+    nameuser: string,
     date: string,
 }

@@ -4,7 +4,6 @@ import {
   IconButton,
   Input,
   InputGroup,
-  InputProps,
   InputRightElement,
   useDisclosure,
   useMergeRefs,
@@ -12,8 +11,13 @@ import {
 import { forwardRef, useRef } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
-export const PasswordField = forwardRef<HTMLInputElement, InputProps>(
-  (props, ref) => {
+interface Props {
+  inputPassword: string;
+  setInputPassword: (str: string) => void;
+}
+
+export const PasswordField = forwardRef<HTMLInputElement, Props>(
+  ({ inputPassword, setInputPassword }, ref) => {
     const { isOpen, onToggle } = useDisclosure();
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -44,7 +48,8 @@ export const PasswordField = forwardRef<HTMLInputElement, InputProps>(
             type={isOpen ? "text" : "password"}
             autoComplete="current-password"
             required
-            {...props}
+            value={inputPassword}
+            onChange={(e) => setInputPassword(e.target.value)}
           />
         </InputGroup>
       </FormControl>

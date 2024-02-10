@@ -3,11 +3,11 @@ import { pathRoutes } from "shared/config/route-path";
 
 import { HomePageLazy } from "pages/home-page";
 import { AboutPageLazy } from "pages/about-page";
-import { AuthPageLazy } from "pages/auth-page";
 import { RegistrationPageLazy } from "pages/registration-page";
 import { LoginPageLazy } from "pages/login-page";
 import { TopPageLazy } from "pages/top-page";
 import { NotFoundLazy } from "pages/not-found";
+import PlacemarkPage from "pages/placemar-page/ui/PlacemarkPage";
 
 export const Routes: typeRouteProps[] = [
   {
@@ -21,9 +21,9 @@ export const Routes: typeRouteProps[] = [
     isAuth: pathRoutes.about.isAuth,
   },
   {
-    path: pathRoutes.auth.fullPath,
-    element: <AuthPageLazy />,
-    isAuth: pathRoutes.auth.isAuth,
+    path: pathRoutes.placemark.fullPath,
+    element: <PlacemarkPage />,
+    isAuth: pathRoutes.placemark.isAuth,
   },
   {
     path: pathRoutes.top.fullPath,

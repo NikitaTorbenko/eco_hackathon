@@ -5,11 +5,11 @@ export const pathRoutes: Record<enumPath, IRoutePathProperties> = {
     name: "Главная",
     path: "/",
     fullPath: "/",
-    isAuth: true,
+    isAuth: false,
   },
-  [enumPath.AUTH]: {
-    path: "/auth",
-    fullPath: "/auth",
+  [enumPath.PLACEMARK]: {
+    path: "/placemark",
+    fullPath: "/placemark/:id",
     isAuth: false,
   },
   [enumPath.NOTFOUND]: {

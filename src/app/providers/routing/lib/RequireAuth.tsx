@@ -1,7 +1,9 @@
-const isAuth = true
+import { useAppSelector } from "shared/lib/hooks/useAppSelector"
 
 export const getRequireAuth = (defautlPage: React.ReactNode) => ({ children }: { children: React.ReactNode }) => {
-  if (!isAuth) { return defautlPage }
+  const authData = useAppSelector(state => state.authReducer.authData)
+
+  if (!authData) { return defautlPage }
 
   return children
 }
