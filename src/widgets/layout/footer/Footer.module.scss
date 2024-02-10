@@ -1,6 +1,7 @@
 .footer {
   background-color: var(--primary-bg-color);
   padding: 40px 0;
+  width: 100%;
 
   &Container {
     display: grid;
@@ -9,6 +10,7 @@
 
     @media (max-width: 730px) {
       grid-template-columns: 1fr;
+      gap: 80px;
     }
   }
 
