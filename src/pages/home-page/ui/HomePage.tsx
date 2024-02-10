@@ -16,7 +16,7 @@ const testApi: IPlacemarkTrash[] = [
     {
         creatorId: 0,
         date: 'DSG',
-        id: 1,
+        id: 2,
         images: [],
         pullutionLevel: 1,
         сoords: [47.222245, 39.650833]
@@ -24,7 +24,7 @@ const testApi: IPlacemarkTrash[] = [
     {
         creatorId: 0,
         date: 'DSG',
-        id: 1,
+        id: 3,
         images: [],
         pullutionLevel: 1,
         сoords: [47.222245, 39.680833]
@@ -36,9 +36,14 @@ const HomePage = () => {
         <Layout isContainer={false}>
             <div className={style.page}>
                 <YMaps>
-                    <Map className={style.map} defaultState={{ center: [46.095805, 36.901504], zoom: 8 }}>
+                    <Map 
+                        className={style.map} 
+                        defaultState={{ center: [46.095805, 36.901504], zoom: 8 }}>
                         {testApi.map(item => 
-                                <PlacemarkTrash  coords={item.сoords} indexColor={item.pullutionLevel}/>)}
+                            <PlacemarkTrash 
+                                key={item.id} 
+                                coords={item.сoords} 
+                                indexColor={item.pullutionLevel}/>)}
                     </Map>
                 </YMaps>
             </div>
