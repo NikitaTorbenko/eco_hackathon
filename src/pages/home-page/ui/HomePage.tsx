@@ -1,8 +1,8 @@
 import { Layout } from "widgets/index"
 import style from "./HomePage.module.scss"
-import { Map } from "entities/map"
 import { IPlacemarkTrash } from "entities/placemark-trash/model/types"
 import { PlacemarkTrash } from "entities/placemark-trash"
+import { Map, YMaps } from "react-yandex-maps"
 
 const testApi: IPlacemarkTrash[] = [
     {
@@ -35,10 +35,12 @@ const HomePage = () => {
     return(
         <Layout isContainer={false}>
             <div className={style.page}>
-                <Map zoom={8} className={style.map} coord={[46.095805, 36.901504]}>
-                    {testApi.map(item => 
-                        <PlacemarkTrash  coords={item.сoords} indexColor={item.pullutionLevel}/>)}
-                </Map>
+                <YMaps>
+                    <Map className={style.map} defaultState={{ center: [46.095805, 36.901504], zoom: 8 }}>
+                        {testApi.map(item => 
+                                <PlacemarkTrash  coords={item.сoords} indexColor={item.pullutionLevel}/>)}
+                    </Map>
+                </YMaps>
             </div>
         </Layout>
     )
