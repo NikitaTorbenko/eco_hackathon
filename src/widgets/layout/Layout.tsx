@@ -7,16 +7,22 @@ import { Sidebar } from "./sidebar/Sidebar";
 
 interface ILayout {
   children: React.ReactNode;
+  isContainer?: boolean
 }
 
-export const Layout: React.FC<ILayout> = memo(({ children }) => {
+export const Layout: React.FC<ILayout> = memo((props) => {
+    const {
+        children,
+        isContainer = true
+    } = props
+    
   return (
     <div>
       <Header />
       <div className={style.content}>
         <Sidebar>sidebar</Sidebar>
         <div className={style.wrap}>
-          <div className={style.container}>{children}</div>
+          <div className={isContainer ? style.container : undefined}>{children}</div>
           <Footer />
         </div>
       </div>

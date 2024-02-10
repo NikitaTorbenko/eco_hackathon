@@ -31,7 +31,7 @@ export const Header: React.FC<IHeaderProps> = memo((props) => {
         <div className={classNames(style.header, className)}>
             <h1>ECO-Hackaton</h1>
             {isShowNavbar &&
-                <Navbar width="600px" className={style.navbar}/>}
+                <Navbar width="400px" className={style.navbar}/>}
         </div>
     )
 })

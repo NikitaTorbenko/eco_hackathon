@@ -1,8 +1,9 @@
 import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit'
 import { type IStore } from './types'
+import { placemarkTrashApiMiddleware, placemarkTrashApiReducer } from 'entities/placemark-trash'
 
 const rootReducers: ReducersMapObject<IStore> = {
-  foo: undefined
+  PlacemarkTrashApi: placemarkTrashApiReducer
 }
 
 export const store = configureStore({
@@ -10,7 +11,7 @@ export const store = configureStore({
   devTools: true,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
-      .concat()
+      .concat(placemarkTrashApiMiddleware)
 })
 
 export type RootState = ReturnType<typeof store.getState>
