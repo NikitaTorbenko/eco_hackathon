@@ -4,7 +4,7 @@ import style from "./Modal.module.scss";
 interface ModalProps {
   children: string | JSX.Element;
   title?: string;
-  classModal: string;
+  classModal?: string;
 }
 
 export const Modal = ({ children, title, classModal }: ModalProps) => {

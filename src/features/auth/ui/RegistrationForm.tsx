@@ -41,10 +41,7 @@ export const RegistrationForm = memo(() => {
   useEffect(() => {
     if(result.data){
       dispatch(saveAuthData({
-        data: {
-          id: result.data.token,
-          username: result.data.name
-        },
+        token: result.data,
         isRememberMy: isRemeberMy
       }))
 
@@ -62,10 +59,10 @@ export const RegistrationForm = memo(() => {
         <Stack spacing="6">
           <Stack spacing={{ base: "2", md: "3" }} textAlign="center">
             <Heading size={{ base: "xs", md: "sm" }}>
-              Sign up for a new account
+              Зарегистрируйте новую учетную запись
             </Heading>
             <Text color="fg.muted">
-              You have an account? <Link to="/login">Log in</Link>
+              Есть уже аккаунт? <Link to="/login">Войти</Link>
             </Text>
           </Stack>
         </Stack>
@@ -79,7 +76,7 @@ export const RegistrationForm = memo(() => {
           <Stack spacing="6">
             <Stack spacing="5">
               <FormControl>
-                <FormLabel htmlFor="login">Login</FormLabel>
+                <FormLabel htmlFor="login">Почта</FormLabel>
                 <Input
                   value={inputLogin}
                   onChange={(e) => setInputLogin(e.target.value)}
@@ -88,7 +85,7 @@ export const RegistrationForm = memo(() => {
                 />
               </FormControl>
               <FormControl>
-                <FormLabel htmlFor="name">Name</FormLabel>
+                <FormLabel htmlFor="name">Имя</FormLabel>
                 <Input
                   value={inputName}
                   onChange={(e) => setInputName(e.target.value)}
@@ -102,8 +99,8 @@ export const RegistrationForm = memo(() => {
               />
             </Stack>
             <HStack justify="space-between">
-              <Checkbox onChange={() => setRememberMy(!isRemeberMy)} defaultChecked>Remember me</Checkbox></HStack>
-            <Button onClick={registrationHandle} colorScheme="green">Registration</Button>
+              <Checkbox onChange={() => setRememberMy(!isRemeberMy)} defaultChecked>Запомнить меня</Checkbox></HStack>
+            <Button onClick={registrationHandle} colorScheme="green">Регистрация</Button>
           </Stack>
         </Box>
       </Stack>

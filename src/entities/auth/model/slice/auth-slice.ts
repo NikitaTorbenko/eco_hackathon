@@ -1,30 +1,30 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { type IAuthData, type IAuthScheme } from '../types/authscheme.ts'
+import { type IAuthScheme } from '../types/authscheme.ts'
 import { AUTH_DATA_KEY } from 'shared/config/local-storage'
 
 const initialState: IAuthScheme = {
-  authData: undefined
+  token: undefined
 }
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    saveAuthData (state, action: PayloadAction<{data: IAuthData, isRememberMy: boolean}>) {
+    saveAuthData (state, action: PayloadAction<{token: string, isRememberMy: boolean}>) {
       if(action.payload.isRememberMy)
         localStorage.setItem(AUTH_DATA_KEY, JSON.stringify(action.payload))
 
-      state.authData = action.payload.data
+      state.token = action.payload.token
     },
     initAuthData (state) {
       const authData = localStorage.getItem(AUTH_DATA_KEY) ?? 'undefined'
       if (authData !== 'undefined') {
-        state.authData = JSON.parse(authData)
+        state.token = JSON.parse(authData).token
       }
     },
     removeAuthData (state) {
       localStorage.removeItem(AUTH_DATA_KEY)
-      state.authData = undefined
+      state.token = undefined
     }
   }
 })

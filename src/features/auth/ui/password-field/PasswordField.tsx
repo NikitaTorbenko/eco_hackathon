@@ -31,7 +31,7 @@ export const PasswordField = forwardRef<HTMLInputElement, Props>(
 
     return (
       <FormControl>
-        <FormLabel htmlFor="password">Password</FormLabel>
+        <FormLabel htmlFor="password">Пароль</FormLabel>
         <InputGroup>
           <InputRightElement>
             <IconButton
