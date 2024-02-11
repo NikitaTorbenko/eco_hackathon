@@ -6,20 +6,20 @@ export const reportAddApi = createApi({
   reducerPath: "ReportAddApi",
   baseQuery: baseQuery,
   endpoints: (build) => ({
-    addNewReport: build.mutation<null, {form: IReportForm, token: string}>({
-      query: ({form, token}) => ({
-        url: fetchPath.report,
+    addNewReport: build.mutation<null, { form: IReportForm; token: string }>({
+      query: ({ form, token }) => ({
+        url: `point/${form.id}/reports`,
         method: "POST",
         body: form,
         headers: {
-            Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       }),
     }),
   }),
 });
 
-export const {useAddNewReportMutation} = reportAddApi
+export const { useAddNewReportMutation } = reportAddApi;
 
-export const reportApiMiddleware = reportAddApi.middleware
-export const reportApiReducer = reportAddApi.reducer
+export const reportApiMiddleware = reportAddApi.middleware;
+export const reportApiReducer = reportAddApi.reducer;
