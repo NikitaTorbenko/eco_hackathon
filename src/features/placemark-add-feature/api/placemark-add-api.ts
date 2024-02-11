@@ -3,6 +3,7 @@ import { baseQuery, fetchPath } from "shared/config/api";
 
 export const placemarkAddApi = createApi({
   reducerPath: "PlacemarkAddApi",
+  tagTypes: ['placemark'],
   baseQuery: baseQuery,
   endpoints: (build) => ({
     addNewPlacemark: build.mutation<null, {coords: [number, number], token: string}>({
@@ -14,7 +15,8 @@ export const placemarkAddApi = createApi({
             Authorization: `Bearer ${token}`
         }
       }),
-    }),
+      invalidatesTags: ['placemark']
+    })
   }),
 });
 

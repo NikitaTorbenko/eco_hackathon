@@ -1,3 +1,5 @@
 export interface IPlacemarkTrash {
-    сoords: [number, number],
+    id: number,
+    coords: [number, number],
+    level: number,
 }

@@ -5,6 +5,7 @@ import { Box, Button, useToast } from "@chakra-ui/react"
 import { useCallback, useState } from "react"
 import { useAddNewPlacemarkMutation } from "features/placemark-add-feature"
 import { useAppSelector } from "shared/lib/hooks/useAppSelector"
+import { PlacemarkTrash, useGetPlacemarksQuery } from "entities/placemark-trash"
 
 const HomePage = () => {
     const [isAddNewPlacemark, setIsAddNewPlacemark] = useState(false)
@@ -12,6 +13,7 @@ const HomePage = () => {
     const toast = useToast()
     const token = useAppSelector(state => state.authReducer.token)
     const [addNewPlacemark, result] = useAddNewPlacemarkMutation()
+    const {data} = useGetPlacemarksQuery(null);
 
     const addNewPlacemarkHandle = useCallback((coords: [number, number]) => {
         addNewPlacemark({
@@ -58,6 +60,8 @@ const HomePage = () => {
                         className={style.map} 
                         defaultState={{ center: [46.095805, 36.901504], zoom: 8 }}>
                             <Placemark geometry={coords}/>
+                            {data?.map(item =>  
+                                <PlacemarkTrash indexColor={item.level} coords={item.coords}/>)}
                     </Map>
                 </YMaps>
                 <Button

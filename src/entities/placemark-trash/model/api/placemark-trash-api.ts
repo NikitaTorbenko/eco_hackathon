@@ -7,7 +7,7 @@ export const placemarkTrashApi = createApi({
   baseQuery,
   endpoints: (builder) => ({
     getPlacemarks: builder.query<IPlacemarkTrash[], null>({
-      query: () => `${fetchPath.point}`,
+      query: () => `${fetchPath.point}/0`,
     }),
     getPlacemarkById: builder.query<IPlacemarkTrash, number>({
       query: (id) => `${fetchPath.point}/${id}`,
