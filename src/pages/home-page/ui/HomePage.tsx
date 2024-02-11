@@ -6,14 +6,20 @@ import { useCallback, useState } from "react"
 import { useAddNewPlacemarkMutation } from "features/placemark-add-feature"
 import { useAppSelector } from "shared/lib/hooks/useAppSelector"
 import { PlacemarkTrash, useGetPlacemarksQuery } from "entities/placemark-trash"
+import { useNavigate } from "react-router"
+import { pathRoutes } from "shared/config/route-path"
+import { PlacemarkSortForm } from "features/placemark-sort-form"
 
 const HomePage = () => {
     const [isAddNewPlacemark, setIsAddNewPlacemark] = useState(false)
+    const navigate = useNavigate()
     const [coords, setCoords] = useState<[number, number]>([0, 0])
     const toast = useToast()
     const token = useAppSelector(state => state.authReducer.token)
     const [addNewPlacemark, result] = useAddNewPlacemarkMutation()
-    const {data} = useGetPlacemarksQuery(null);
+
+    const [sortValue, setSortValue] = useState(0)
+    const {data} = useGetPlacemarksQuery(sortValue);
 
     const addNewPlacemarkHandle = useCallback((coords: [number, number]) => {
         addNewPlacemark({
@@ -30,6 +36,10 @@ const HomePage = () => {
             addNewPlacemarkHandle(coord)
         }
     }, [isAddNewPlacemark, coords])
+
+    const onClickPlacemarkHandle = useCallback((id: number) => {
+        navigate(pathRoutes.placemark.path + `/${id}`)
+    }, [])
 
     const getMyCoordsHandle = useCallback(() => {
         if (navigator.geolocation) {
@@ -61,18 +71,21 @@ const HomePage = () => {
                         defaultState={{ center: [46.095805, 36.901504], zoom: 8 }}>
                             <Placemark geometry={coords}/>
                             {data?.map(item =>  
-                                <PlacemarkTrash indexColor={item.level} coords={item.coords}/>)}
+                                <PlacemarkTrash onClick={() => onClickPlacemarkHandle(item.id)} indexColor={item.level} coords={item.coords}/>)}
                     </Map>
                 </YMaps>
-                <Button
-                    onClick={() => setIsAddNewPlacemark(!isAddNewPlacemark)} 
-                    colorScheme="green">
-                    {isAddNewPlacemark ? 'Выберите точку на карте' : 'Добавить точку'}
-                </Button>
-                {isAddNewPlacemark &&
-                    <Button margin='0 0 0 10px' onClick={getMyCoordsHandle} colorScheme="yellow">
-                        Моё местоположение
-                    </Button>}
+                <div className={style.btns}>
+                    <Button
+                        onClick={() => setIsAddNewPlacemark(!isAddNewPlacemark)} 
+                        colorScheme="green">
+                        {isAddNewPlacemark ? 'Выберите точку на карте' : 'Добавить точку'}
+                    </Button>
+                    {isAddNewPlacemark &&
+                        <Button margin='0 0 0 10px' onClick={getMyCoordsHandle} colorScheme="yellow">
+                            Моё местоположение
+                        </Button>}
+                    <PlacemarkSortForm getSortValue={setSortValue}/>
+                </div>
             </div>
             {result.data && toast({
                 position: 'top-left',

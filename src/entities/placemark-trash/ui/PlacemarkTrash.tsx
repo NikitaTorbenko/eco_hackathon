@@ -3,6 +3,7 @@ import { memo } from "react"
 import { trashLevels } from "shared/data/level-trash"
 
 interface IPlacemarkTrash {
+    onClick?: () => void
     iconImageSize?: [number, number],
     iconImageOffset?: [number, number],
     indexColor?: number,
@@ -11,6 +12,7 @@ interface IPlacemarkTrash {
 
 export const PlacemarkTrash: React.FC<IPlacemarkTrash> = memo((props) => {
     const {
+        onClick,
         iconImageSize = [30, 30],
         indexColor = 0,
         iconImageOffset = [-15, -30],
@@ -26,6 +28,7 @@ export const PlacemarkTrash: React.FC<IPlacemarkTrash> = memo((props) => {
 
     return(
         <Placemark
+            onClick={onClick}
             geometry={coords} 
             options={placemarkOptions}/>
     )
