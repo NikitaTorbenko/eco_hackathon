@@ -15,12 +15,18 @@ const PlacemarkPage = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const {data = [], isLoading} = useGetReportsQuery(Number(id));
 
-    if(isLoading)
-        return(
-            <div className={style.wrapper_loader}>
-                 <CircularProgress value={80}/>
-            </div>
-        )
+  if (isLoading)
+    return (
+      <div className={style.wrapper_loader}>
+        <CircularProgress value={80} />
+      </div>
+    );
+
+  // if(data?.length === 0 || !data){
+  //     setTimeout(() => {
+  //         navigation(pathRoutes["not-found"].path)
+  //     }, 200);
+  // }
 
     return(
         <Layout>
