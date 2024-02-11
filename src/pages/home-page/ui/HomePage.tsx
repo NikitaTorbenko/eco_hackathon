@@ -66,7 +66,7 @@ const HomePage = () => {
                     {isAddNewPlacemark ? 'Выберите точку на карте' : 'Добавить точку'}
                 </Button>
                 {isAddNewPlacemark &&
-                    <Button onClick={getMyCoordsHandle} colorScheme="yellow">
+                    <Button margin='0 0 0 10px' onClick={getMyCoordsHandle} colorScheme="yellow">
                         Моё местоположение
                     </Button>}
             </div>

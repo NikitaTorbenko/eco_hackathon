@@ -4,7 +4,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaTrashRestore } from "react-icons/fa";
 
-import { Button, CircularProgress, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
+import { Button, CircularProgress, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, useDisclosure } from '@chakra-ui/react'
 import { Layout } from "widgets/index"
 import { trashLevels } from "shared/data/level-trash";
 import { ReportItem, useGetReportsQuery } from "entities/report";
@@ -22,37 +22,34 @@ const PlacemarkPage = () => {
       </div>
     );
 
-  // if(data?.length === 0 || !data){
-  //     setTimeout(() => {
-  //         navigation(pathRoutes["not-found"].path)
-  //     }, 200);
-  // }
-
     return(
         <Layout>
             <div className={style.page}>
-                <div className={style.slider}>
-                    
-                </div>
-                <div className={style.info}>
-                    <span><FaUser/> Автор: {data[0].username || 'неизвестно'}</span>
-                    <span>
-                        <FaTrashRestore/>
-                        <span>Уровень загрязнения:</span>
-                        <div 
-                            style={{backgroundColor: trashLevels[data[0].pullutionLevel || 0].color}} 
-                            className={style.color}/>
-                        <span
-                            className={style.level_trash}
-                            style={{color: trashLevels[data[0].pullutionLevel || 0].color}}>
-                                - {trashLevels[data[0].pullutionLevel || 0].name}
-                        </span>
-                    </span>
-                    <span><FaCalendarAlt/> дата: {data[0].date || 'неизвестно'}</span>
-                </div>
-                <div className={style.description}>
-                    {data[0].message}
-                </div>
+                {data.length !== 0 ?
+                    <div>
+                        <div className={style.slider}>
+                        
+                        </div>
+                        <div className={style.info}>
+                            <span><FaUser/> Автор: {data[0].username || 'неизвестно'}</span>
+                            <span>
+                                <FaTrashRestore/>
+                                <span>Уровень загрязнения:</span>
+                                <div 
+                                    style={{backgroundColor: trashLevels[data[0].pullutionLevel || 0].color}} 
+                                    className={style.color}/>
+                                <span
+                                    className={style.level_trash}
+                                    style={{color: trashLevels[data[0].pullutionLevel || 0].color}}>
+                                        - {trashLevels[data[0].pullutionLevel || 0].name}
+                                </span>
+                            </span>
+                            <span><FaCalendarAlt/> дата: {data[0].date || 'неизвестно'}</span>
+                        </div>
+                        <div className={style.description}>
+                            {data[0].message}
+                        </div>
+                    </div> : <Text margin='20px'>Данных нет, добавьте свой первый репорт</Text>}
                 <Button onClick={onOpen} colorScheme="green">
                     Добавить репорт
                 </Button>
